@@ -35,6 +35,10 @@ cd $_
 make full
 ```
 
+Open in your browser [http://localhost:8080/](http://localhost:8080/).
+
+# other themes
+
 The `readthedocs` theme is being used, for another theme, make sure to have the right `base.html` template file with the php code added.
 
 ```
