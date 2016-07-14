@@ -30,8 +30,8 @@ extra:
 # usage
 
 ```
-git clone
-cd $_
+git clone git@github.com:otsuarez/mkdocs_auth.git
+cd mkdocs_auth
 make full
 ```
 
