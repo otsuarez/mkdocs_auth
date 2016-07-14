@@ -1,0 +1,18 @@
+# Project information
+site_name: Mkdocs_Auth
+site_description: mkdocs basic authentication example
+site_author: ACME
+
+# Documentation and theme
+theme: readthedocs
+theme_dir: theme_addons
+
+# Page tree
+pages:
+  - Home: index.md
+  - Mkdocs: mkdocs.md
+
+extra:
+  username: "admin"
+  password: "secret"
+
