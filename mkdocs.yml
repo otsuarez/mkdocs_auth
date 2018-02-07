@@ -5,7 +5,6 @@ site_author: ACME
 
 # Documentation and theme
 theme: readthedocs
-theme_dir: theme_addons
 
 # Page tree
 pages:

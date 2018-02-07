@@ -11,6 +11,6 @@ serve:
 	cd site && php -S 0:8080
 
 build:
-	mkdocs build --clean
+	mkdocs build --theme-dir theme_addons --clean
 	theme_addons/do_php_thing.sh
 
