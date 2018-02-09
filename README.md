@@ -32,10 +32,24 @@ extra:
 ```
 git clone git@github.com:otsuarez/mkdocs_auth.git
 cd mkdocs_auth
+pip install -r requirements.txt
 make full
 ```
 
 Open in your browser [http://localhost:8080/](http://localhost:8080/).
+
+## using a container
+
+```
+docker run -p 8080:8080 --rm -it ubuntu:artful bin/bash
+apt update -y
+apt install -y git  build-essential python-pip php
+cd root
+git clone https://github.com/otsuarez/mkdocs_auth.git
+cd mkdocs_auth
+pip install -r requirements.txt
+make full
+```
 
 # other themes
 
