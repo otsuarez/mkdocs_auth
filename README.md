@@ -47,3 +47,4 @@ cp $(theme="$(egrep "^theme" mkdocs.yml| cut -f2 -d:)" ; locate base.html | grep
 
 Check the `Makefile` file for the actual commands.
 
+

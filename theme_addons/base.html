@@ -1,7 +1,3 @@
-<?php
-$users = array('{{ config.extra.username }}' => '{{ config.extra.password }}');
-require_once('{{ base_url }}/basic_auth.php');
-?>
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -71,65 +67,92 @@ require_once('{{ base_url }}/basic_auth.php');
       <div class="wy-side-nav-search">
     {%- block site_name %}
         <a href="{{ nav.homepage.url }}" class="icon icon-home"> {{ config.site_name }}</a>
-	  {%- endblock %}
-	  {%- block search_button %}
+          {%- endblock %}
+          {%- block search_button %}
         {% if 'search' in config['plugins'] %}{% include "searchbox.html" %}{% endif %}
-	  {%- endblock %}
+          {%- endblock %}
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
         {%- block site_nav %}
-	<ul class="current">
-	  {% set navlevel = 1 %}
+        <ul class="current">
+          {% set navlevel = 1 %}
           {% for nav_item in nav %}
             <li class="toctree-l{{ navlevel }}{% if nav_item.active and not nav_item.children %} current{%endif%}">
-		{% include 'nav.html' %}
-	    </li>
-          {% endfor %}
-        </ul>
-    {%- endblock %}
-      </div>
-      &nbsp;
+                {% include 'nav.html' %}
+            </li>
+            {% endfor %}
+          </ul>
+      {%- endblock %}
+        </div>
+        &nbsp;
+      </nav>
+  
+      <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+  
+        {# MOBILE NAV, TRIGGLES SIDE NAV ON TOGGLE #}
+        <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="{{ nav.homepage.url }}">{{ config.site_name }}</a>
+        </nav>
+  
+        {# PAGE CONTENT #}
+        <div class="wy-nav-content">
+          <div class="rst-content">
+            {% include "breadcrumbs.html" %}
+            <div role="main">
+              <div class="section">
+                {% block content %}
+                  {{ page.content }}
+                {% endblock %}
+              </div>
+            </div>
+        {%- block footer %}
+            {% include "footer.html" %}
+        {% endblock %}
+          </div>
+        </div>
+  
+      </section>
+  
+    </div>
+  
+    {% include "versions.html" %}
+  
+    {%- block scripts %}
+      <script>var base_url = '{{ base_url }}';</script>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      {# MOBILE NAV, TRIGGLES SIDE NAV ON TOGGLE #}
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="{{ nav.homepage.url }}">{{ config.site_name }}</a>
-      </nav>
-
-      {# PAGE CONTENT #}
-      <div class="wy-nav-content">
-        <div class="rst-content">
-          {% include "breadcrumbs.html" %}
-          <div role="main">
-            <div class="section">
-              {% block content %}
-                {{ page.content }}
-              {% endblock %}
-            </div>
+    {# PAGE CONTENT #}
+    <div class="wy-nav-content">
+      <div class="rst-content">
+        {% include "breadcrumbs.html" %}
+        <div role="main">
+          <div class="section">
+            {% block content %}
+              {{ page.content }}
+            {% endblock %}
           </div>
-      {%- block footer %}
-          {% include "footer.html" %}
-      {% endblock %}
         </div>
+    {%- block footer %}
+        {% include "footer.html" %}
+    {% endblock %}
       </div>
+    </div>
 
-    </section>
+  </section>
 
-  </div>
+</div>
 
-  {% include "versions.html" %}
+{% include "versions.html" %}
 
-  {%- block scripts %}
-    <script>var base_url = '{{ base_url }}';</script>
-    <script src="{{ base_url }}/js/theme.js"></script>
-    {%- for path in extra_javascript %}
-      <script src="{{ path }}"></script>
-    {%- endfor %}
-  {%- endblock %}
+{%- block scripts %}
+  <script>var base_url = '{{ base_url }}';</script>
+  <script src="{{ base_url }}/js/theme.js"></script>
+  {%- for path in extra_javascript %}
+    <script src="{{ path }}"></script>
+  {%- endfor %}
+{%- endblock %}
 
 </body>
 </html>
@@ -138,4 +161,4 @@ require_once('{{ base_url }}/basic_auth.php');
 MkDocs version : {{ mkdocs_version }}
 Build Date UTC : {{ build_date_utc }}
 -->
-{% endif %}
+{% endif %}                      
