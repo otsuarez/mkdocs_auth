@@ -36,6 +36,18 @@ pip install -r requirements.txt
 make full
 ```
 
+## using virtualenv
+
+```
+# install virtualenv
+git clone git@github.com:otsuarez/mkdocs_auth.git
+cd mkdocs_auth
+virtualenv --python=/usr/bin/python2.7 .pyenv
+source .pyenv/bin/activate
+pip install -r requirements.txt
+make full
+```
+
 Open in your browser [http://localhost:8080/](http://localhost:8080/).
 
 ## using a container
@@ -59,6 +71,18 @@ The `readthedocs` theme is being used, for another theme, make sure to have the 
 cp $(theme="$(egrep "^theme" mkdocs.yml| cut -f2 -d:)" ; locate base.html | grep $theme) theme_addons/
 ```
 
-Check the `Makefile` file for the actual commands.
+If using a virtualenv:
+
+```
+cp $(theme="$(egrep "^theme" mkdocs.yml| cut -f2 -d:)" ; find .pyenv -name  base.html  | grep $theme) theme_addons/
+```
+
+Then add the php code to the `base.html` file.
+
+```
+tmp="$(mktemp)" && cat theme_addons/basic_auth.inc theme_addons/base.html >"$tmp" && mv "$tmp" theme_addons/base.html 
+```
+
+Check the `Makefile` file for reference on the actual commands and scripts being executed.
 
 

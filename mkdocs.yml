@@ -4,7 +4,9 @@ site_description: mkdocs basic authentication example
 site_author: ACME
 
 # Documentation and theme
-theme: readthedocs
+theme: 
+  name: readthedocs
+  custom_dir: 'theme_addons/'
 
 # Page tree
 pages:
