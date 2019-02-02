@@ -59,7 +59,7 @@ Open in your browser [http://localhost:8080/](http://localhost:8080/).
 ## using a container
 
 ```
-docker run -p 8080:8080 --rm -it ubuntu:artful bin/bash
+docker run -p 8080:8080 --rm -it ubuntu:bionic bin/bash
 apt update -y
 apt install -y git  build-essential python-pip php
 cd root
